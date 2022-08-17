@@ -1,4 +1,4 @@
-name: Java CIdckr_pat_U-SYj1L_bNJNDqz1Ye_OwBaW_YI
+name: Java CI
 on: push
 env:
   docker_username: ${{ secrets.USERNAME }}
@@ -52,4 +52,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execute component test
-        run: chmod +x ci/component-test.sh && GIT_COMMIT="GA-$GITHUB_SHA" && ci/component-test.sh          
+        run: chmod +x ci/component-test.sh && GIT_COMMIT="GA-$GITHUB_SHA" && ci/component-test.sh
