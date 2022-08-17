@@ -1,8 +1,8 @@
 name: Java CIdckr_pat_U-SYj1L_bNJNDqz1Ye_OwBaW_YI
 on: push
 env:
-  docker_username: ${{ USERNAME }}
-  docker_password: ${{ PASSWORD }}
+  docker_username: ${{ secrets.USERNAME }}
+  docker_password: ${{ secrets.PASSWORD }}
   GIT_COMMIT: messagehere
 jobs:
   Clone-down:
