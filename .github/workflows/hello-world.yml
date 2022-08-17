@@ -25,11 +25,11 @@ jobs:
         with:
           name: code
           path: .
-      - name: upload jar
-        uses: actions/upload-artifact@v2
-        with:
-          name: jar
-          path: app/build/libs/app-0.1-all.jar
+#      - name: upload jar
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: jar
+#          path: ./app/build/libs/app-0.1-all.jar
       - name: Build
         run: chmod +x ci/build-app.sh && ci/build-app.sh
       - name: Test
