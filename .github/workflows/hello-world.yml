@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jar
-          path: app/build/libs/app-0.1-all.jar
+          path: ./app/build/libs/app-0.1-all.jar
       - name: Build
         run: chmod +x ci/build-app.sh && ci/build-app.sh
       - name: Test
@@ -47,4 +47,9 @@ jobs:
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
       - name: push docker
         run: chmod +x ci/push-docker.sh && ci/push-docker.sh
-          
+  Component-test:
+    needs: Docker-image
+    runs: ubuntu-latest
+    steps:
+      - name: Execute component test
+        run chmod +x ci/component-test.sh && GIT_COMMIT="GA-$GITHUB_SHA" && ci/component-test.sh          
