@@ -1,5 +1,9 @@
-name: Java CI
+name: Java CIdckr_pat_U-SYj1L_bNJNDqz1Ye_OwBaW_YI
 on: push
+env:
+  docker_username: ${{ Docker.Username}}
+  docker_password: ${{ Docker.Password}}
+  GIT_COMMIT: messagehere
 jobs:
   Clone-down:
     runs-on: ubuntu-latest
@@ -25,3 +29,21 @@ jobs:
         run: chmod +x ci/build-app.sh && ci/build-app.sh
       - name: Test
         run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
+  Docker-image:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: download
+        uses: actions/download-artifact@v2
+        with:
+          name: code
+          path: .
+        uses: actions/download-artifact@v2
+        with:
+          name: jar
+          path: app/build/libs/app-0.1-all.jar
+      - name: build docker
+        run: chmod +x ci/build-docker.sh && ci/build-docker.sh
+      - name: push docker
+        run: chmod +x ci/push-docker.sh && ci/push-docker.sh
+          
