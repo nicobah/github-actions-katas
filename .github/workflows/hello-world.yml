@@ -21,5 +21,7 @@ jobs:
         with:
           name: code
           path: .
-      - name: build and run
-        run: ci/build-app.sh && ci/unit-test-app.sh
+      - name: Build
+        run: ci/build-app.sh
+      - name: Test
+        run: ci/unit-test-app.sh
