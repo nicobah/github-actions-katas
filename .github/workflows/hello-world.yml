@@ -25,6 +25,11 @@ jobs:
         with:
           name: code
           path: .
+      - name: upload jar
+        uses: actions/upload-artifact@v2
+        with:
+          name: jar
+          path: app/build/libs/app-0.1-all.jar
       - name: Build
         run: chmod +x ci/build-app.sh && ci/build-app.sh
       - name: Test
@@ -36,7 +41,7 @@ jobs:
       - name: download
         uses: actions/download-artifact@v2
         with:
-          name: code
+          name: jar
           path: .
       - name: build docker
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
